@@ -370,29 +370,21 @@
 
       
         
-          
-            <h5 id="hexo-g报错a-multiline-key-may-not-be-an-imp-licit-key"><a href="#hexo-g报错a-multiline-key-may-not-be-an-imp-licit-key" class="headerlink" title="hexo g报错a multiline key may not be an imp licit key"></a><code>hexo g</code>报错<code>a multiline key may not be an imp licit key</code></h5><p>很可能是没加空格所致，但这次改来改去还是不行</p>
+          <h5 id="hexo-g报错a-multiline-key-may-not-be-an-imp-licit-key"><a href="#hexo-g报错a-multiline-key-may-not-be-an-imp-licit-key" class="headerlink" title="hexo g报错a multiline key may not be an imp licit key"></a><code>hexo g</code>报错<code>a multiline key may not be an imp licit key</code></h5><p>很可能是没加空格所致，但这次改来改去还是不行</p>
 <pre><code>title: spring boot 学习
 categories: 
 -后端 
 -spring boot 
 tags: spring boot 
 </code></pre><p>如上所示，每个冒号后面都留了空格啊，后来发现就是那个分类的地方，<code>-后端</code>其中的连字符与文字之间也要空格…</p>
-<h5 id="hexo不显示markdown语法的标题？"><a href="#hexo不显示markdown语法的标题？" class="headerlink" title="hexo不显示markdown语法的标题？"></a>hexo不显示markdown语法的标题？</h5><p><code>###jpa中的一些配置</code><br>页面直接显示出#号…</p>
-<p>原因是#号后面也要加空格</p>
-<h5 id="hexo在-post里添加的md文件给了tags-xx的分类，点击页面的分类选项还是显示不出来？"><a href="#hexo在-post里添加的md文件给了tags-xx的分类，点击页面的分类选项还是显示不出来？" class="headerlink" title="hexo在_post里添加的md文件给了tags: xx的分类，点击页面的分类选项还是显示不出来？"></a>hexo在_post里添加的md文件给了tags: xx的分类，点击页面的分类选项还是显示不出来？</h5><ol>
-<li><code>hexo new page tags</code>之后会在source文件夹生成一个tags的文件夹里面有index.md文件</li>
-<li><p>最最重要的是：</p>
-<pre><code>&lt;del&gt;title: tags&lt;/del&gt;
-date: 2017-10-29 22:11:37
-type: tags
-</code></pre><p> 要在默认的index.md那个文件里删除title字段，然后加上type:tags即可</p>
-</li>
-<li><p>最后看看有无变化，不然需要<code>hexo clean</code>来重新生成</p>
-</li>
-</ol>
-
-          
+<h5 id="hexo不显示markdown语法的标题？"><a href="#hexo不显示markdown语法的标题？" class="headerlink" title="hexo不显示markdown语法的标题？"></a>hexo不显示markdown语法的标题？</h5><p><code>###jpa中的一些配置</code><br>页面直接显示出#号…<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/30/Hexo踩过的一些坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1554,10 +1546,10 @@ git clone https://github.com/iissnan/hexo-theme-nextthemes/next（next为主题�
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
