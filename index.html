@@ -381,8 +381,7 @@
 
       
         
-          
-            <h3 id="11-11-总结"><a href="#11-11-总结" class="headerlink" title="11-11 总结"></a>11-11 总结</h3><h5 id="怎么用js来实现页面上下滚动到某个指定位置？"><a href="#怎么用js来实现页面上下滚动到某个指定位置？" class="headerlink" title="怎么用js来实现页面上下滚动到某个指定位置？"></a>怎么用js来实现页面上下滚动到某个指定位置？</h5><ol>
+          <h3 id="11-11-总结"><a href="#11-11-总结" class="headerlink" title="11-11 总结"></a>11-11 总结</h3><h5 id="怎么用js来实现页面上下滚动到某个指定位置？"><a href="#怎么用js来实现页面上下滚动到某个指定位置？" class="headerlink" title="怎么用js来实现页面上下滚动到某个指定位置？"></a>怎么用js来实现页面上下滚动到某个指定位置？</h5><ol>
 <li>用<code>&lt;a herf=&quot;#id&quot;&gt;</code> 来跳到某个id的元素上去</li>
 <li><p>用jquery的animate</p>
 <pre><code>$(&quot;.nav-right-activity&quot;).click(function() {  
@@ -396,62 +395,13 @@
 <p><a href="https://stackoverflow.com/questions/6677035/jquery-scroll-to-element" target="_blank" rel="external">jqurey实现上下滚动</a></p>
 <p><a href="http://blog.csdn.net/lucky_lxg/article/details/71087731" target="_blank" rel="external">JS控制div跳转到指定的位置的几种解决方案总结</a></p>
 <p><a href="https://yq.aliyun.com/ziliao/116129" target="_blank" rel="external">好像很厉害的样子</a></p>
-<h5 id="怎么实现元素的拖拽？"><a href="#怎么实现元素的拖拽？" class="headerlink" title="怎么实现元素的拖拽？"></a>怎么实现元素的拖拽？</h5><p>还没总结的好… 但是有原生的支持，只需调用api</p>
-<p><a href="http://www.w3school.com.cn/html5/html_5_draganddrop.asp" target="_blank" rel="external">w3school-html5拖放</a></p>
-<p><a href="http://www.zhangxinxu.com/wordpress/2011/02/html5-drag-drop-%E6%8B%96%E6%8B%BD%E4%B8%8E%E6%8B%96%E6%94%BE%E7%AE%80%E4%BB%8B/" target="_blank" rel="external">张鑫旭-HTML5 drag &amp; drop 拖拽与拖放简介</a></p>
-<h5 id="怎么在拖放过程中避免选中文本？"><a href="#怎么在拖放过程中避免选中文本？" class="headerlink" title="怎么在拖放过程中避免选中文本？"></a>怎么在拖放过程中避免选中文本？</h5><p>可用js或css，css更简单点…</p>
-<p><a href="https://www.cnblogs.com/pigtail/archive/2012/09/11/2680462.html" target="_blank" rel="external">禁止选中文本的方法</a></p>
-<h5 id="在display-none-到display-block之间怎么加动态效果？"><a href="#在display-none-到display-block之间怎么加动态效果？" class="headerlink" title="在display:none 到display:block之间怎么加动态效果？"></a>在display:none 到display:block之间怎么加动态效果？</h5><blockquote>
-<p>那个是从：opacity: 1; 到 opacity: 0; 跟display没关系，display表示展现方式，透明度才能确定渐变程度。</p>
-</blockquote>
-<p>使用方法：</p>
-<p>元素需要变化的属性和<code>transition</code>属性在一起:</p>
-<pre><code>start {
-    opacity: 0;
-    transition: opacity .5s ease-in-out;
-    ...    
-}
-</code></pre><p>再在hover时改变该属性即可:</p>
-<pre><code>start:hover {
-    opacity:0.6;
-}
-</code></pre><h5 id="innerHTML插入的文本到了最内层元素的里面，怎么只插入到最外层子元素的后面？"><a href="#innerHTML插入的文本到了最内层元素的里面，怎么只插入到最外层子元素的后面？" class="headerlink" title="innerHTML插入的文本到了最内层元素的里面，怎么只插入到最外层子元素的后面？"></a>innerHTML插入的文本到了最内层元素的里面，怎么只插入到最外层子元素的后面？</h5><p>用innerHTML: 对<code>&lt;div class=&quot;parent&quot;&gt;</code>父元素插入时</p>
-<pre><code>&lt;div class=&quot;parent&quot;&gt;
-    &lt;div class=&quot;son&quot;&gt;
-        &lt;span class=&quot;grandson&quot;&gt;
-            “TEXT”
-...
-</code></pre><p>发现文本到了最里面的子节点，怎么只插入到<code>&lt;div class=&quot;son&quot;&gt;</code>这个级别呢？</p>
-<pre><code>let textNode = document.createTextNode(data);
-parentElem.appendChild(textNode);
-</code></pre><p>用创建文本节点的方式即可…</p>
-<h5 id="小技巧篇：html的hover伪类如何操纵自己包含的子元素以外的元素？"><a href="#小技巧篇：html的hover伪类如何操纵自己包含的子元素以外的元素？" class="headerlink" title="小技巧篇：html的hover伪类如何操纵自己包含的子元素以外的元素？"></a>小技巧篇：html的hover伪类如何操纵自己包含的子元素以外的元素？</h5><p>主要考css的选择器…  百度前端技术学院的学员作业中有个很好的例子</p>
-<pre><code>/*选择前面有li元素的每一个list-bottom类*/
-.header .nav-right li:nth-child(1):hover~ .list-botton {
-  left: 0px;  
-}
-</code></pre><p>用于实现鼠标悬停在导航元素上时，实现该元素的下方的span元素伸缩</p>
-<p><a href="https://zhidao.baidu.com/question/433394201190140164.html" target="_blank" rel="external">html的hover伪类如何操纵自己包含的子元素以外的元素？</a></p>
-<h5 id="悬浮点击遮罩层-有一个x的图标-实现清空内容，发现因为点击到的是x的图标而不是背景区，触发不了"><a href="#悬浮点击遮罩层-有一个x的图标-实现清空内容，发现因为点击到的是x的图标而不是背景区，触发不了" class="headerlink" title="悬浮点击遮罩层(有一个x的图标)实现清空内容，发现因为点击到的是x的图标而不是背景区，触发不了.."></a>悬浮点击遮罩层(有一个x的图标)实现清空内容，发现因为点击到的是x的图标而不是背景区，触发不了..</h5><p>前提： 鼠标悬停在某元素上出现X的图标(遮罩层)，再次点击可以将该元素的text清空</p>
-<p>待解… 有点不稳定，因为不确定是不是，有时可以有时又不行</p>
-<h5 id="想要直接拖放一个元素的值到另一个元素上，却发现由于遮罩层的影响，会让增添的文本节点增添到遮罩层里面…"><a href="#想要直接拖放一个元素的值到另一个元素上，却发现由于遮罩层的影响，会让增添的文本节点增添到遮罩层里面…" class="headerlink" title="想要直接拖放一个元素的值到另一个元素上，却发现由于遮罩层的影响，会让增添的文本节点增添到遮罩层里面…"></a>想要直接拖放一个元素的值到另一个元素上，却发现由于遮罩层的影响，会让增添的文本节点增添到遮罩层里面…</h5><pre><code>function drop(ev) {
-  ev.preventDefault();
-  let data=ev.dataTransfer.getData(&quot;Text&quot;);
-  let text = document.createTextNode(data);
-  if(ev.target.nodeName == &quot;I&quot;) {  
-    //加一个判断语句即可解决... I是&lt;i&gt;图标元素
-    ev.target.parentNode.parentNode.appendChild(text);
-  }else 
-    ev.target.parentNode.appendChild(text);
-}
-</code></pre><h5 id="新知识点"><a href="#新知识点" class="headerlink" title="新知识点"></a>新知识点</h5><ol>
-<li><code>event.target</code>可以获得触发该事件的节点</li>
-<li>ev.target.nodeName 节点名称</li>
-<li>childNodes属性返回节点的子节点集合，注意是第一层子节点，且包括文本和换行</li>
-<li>node.removeChild(node) 注意是删除node</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/18/1111/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -601,8 +551,7 @@ parentElem.appendChild(textNode);
 
       
         
-          
-            <h3 id="11-17-总结"><a href="#11-17-总结" class="headerlink" title="11-17 总结"></a>11-17 总结</h3><h5 id="js-遍历对象，得到的key值顺序是不一致的？"><a href="#js-遍历对象，得到的key值顺序是不一致的？" class="headerlink" title="js 遍历对象，得到的key值顺序是不一致的？"></a>js 遍历对象，得到的key值顺序是不一致的？</h5><p>当使用for..in语句的时候并不能保证得到的key的顺序</p>
+          <h3 id="11-17-总结"><a href="#11-17-总结" class="headerlink" title="11-17 总结"></a>11-17 总结</h3><h5 id="js-遍历对象，得到的key值顺序是不一致的？"><a href="#js-遍历对象，得到的key值顺序是不一致的？" class="headerlink" title="js 遍历对象，得到的key值顺序是不一致的？"></a>js 遍历对象，得到的key值顺序是不一致的？</h5><p>当使用for..in语句的时候并不能保证得到的key的顺序</p>
 <p>一般做法是</p>
 <pre><code>var index = 0;
 for(var key in store) {
@@ -611,79 +560,14 @@ for(var key in store) {
 }
 </code></pre><p>提前用一个数组来存储，并排好序</p>
 <h5 id="怎么清空数组的内容"><a href="#怎么清空数组的内容" class="headerlink" title="怎么清空数组的内容"></a>怎么清空数组的内容</h5><pre><code>arr.length = 0;
-</code></pre><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h5 id="Vue怎么在input输入完成后按enter来触发事件，获取input的值？"><a href="#Vue怎么在input输入完成后按enter来触发事件，获取input的值？" class="headerlink" title="Vue怎么在input输入完成后按enter来触发事件，获取input的值？"></a>Vue怎么在input输入完成后按enter来触发事件，获取input的值？</h5><p><a href="http://www.sunzhongwei.com/how-to-get-input-value-in-vuejs" target="_blank" rel="external">vuejs 中如何优雅的获取 Input 值</a></p>
-<p>以上的博客已经解析的相当好了</p>
-<p>实践：</p>
-<pre><code>&lt;input type=&quot;text&quot; name=&quot;author&quot; v-model=&quot;inputName&quot; @keyup.enter=&quot;getAuthorArticle&quot;&gt;
-</code></pre><p>v-model绑定值，用@keyup.enter来触发enter事件，调用getAuthorArticle函数</p>
-<h5 id="vue怎么让v-for出来的项目，当点击其中一项时，输出该项的内容？"><a href="#vue怎么让v-for出来的项目，当点击其中一项时，输出该项的内容？" class="headerlink" title="vue怎么让v-for出来的项目，当点击其中一项时，输出该项的内容？"></a>vue怎么让v-for出来的项目，当点击其中一项时，输出该项的内容？</h5><p>遇到的大致情形是：输入搜索词，弹出搜索项，点击搜索项时，得到此搜索项的内容(标题)，并使得父组件的文章立即切换到相应标题的文章</p>
-<p>实践:</p>
-<pre><code>&lt;!-- 子组件 --&gt;
-&lt;div class=&quot;item&quot; v-for=&quot;title in titles&quot; v-on:click=&quot;emitMyEvent($event)&quot;&gt;{{ title }}&lt;/div&gt;
-
-emitMyEvent(event) {
-  var i=0;
-  for( i=0;i&lt;5;i++){
-    if(event.currentTarget.textContent === this.titles[i]) {
-      break;
-    }
-  }
-  this.$emit(&apos;my-event&apos;,this.titles[i], this.authors[i], this.contents[i]);
-}
-
-&lt;!-- 父组件 --&gt;
-&lt;searchArticle @my-event=&quot;getMyEvent&quot;&gt;&lt;/searchArticle&gt;  
-
-getMyEvent (title,author,content) {
-  this.content = content;
-  this.title = title;
-  this.author = author;
-}
-</code></pre><p>用<code>emitMyEvent($event)</code>来将当前触发点击事件的元素信息发送给父元素</p>
-<p>用<code>event.currentTarget.textContent</code>来获取当前元素的内容，再将其与title数组比较，确定是哪个元素(i)，并由此将对应的标题，作者，内容，发送给父元素</p>
-<p>父元素用<code>@my-event</code>来接收传参，这样就实现了数据的流动</p>
-<p>参考资料：</p>
-<p><a href="https://segmentfault.com/q/1010000008921663/a-1020000008921723" target="_blank" rel="external">vue有办法点击获取当前元素吗？</a></p>
-<p><a href="https://segmentfault.com/q/1010000005160077" target="_blank" rel="external">vue里面如何让v-for循环出来的列表里面的列表click事件只对当前列表有效?</a></p>
-<h5 id="HTML-续上次原型任务"><a href="#HTML-续上次原型任务" class="headerlink" title="HTML 续上次原型任务"></a>HTML 续上次原型任务</h5><h5 id="怎么让input-type-”checkbox”的元素悬浮时出现不可选择？"><a href="#怎么让input-type-”checkbox”的元素悬浮时出现不可选择？" class="headerlink" title="怎么让input type=”checkbox”的元素悬浮时出现不可选择？"></a>怎么让input type=”checkbox”的元素悬浮时出现不可选择？</h5><p>HTML的disabled 属性规定禁用按钮</p>
-<p>例子:</p>
-<pre><code>&lt;button type=&quot;button&quot; disabled=&quot;disabled&quot;&gt;Click Me!&lt;/button&gt;
-</code></pre><h5 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h5><pre><code>text-decoration:line-through;
-</code></pre><h5 id="input输入，当输入完成按下enter时，将内容添加到下方，下方不断随着输入的内容越多而高度增大…"><a href="#input输入，当输入完成按下enter时，将内容添加到下方，下方不断随着输入的内容越多而高度增大…" class="headerlink" title="input输入，当输入完成按下enter时，将内容添加到下方，下方不断随着输入的内容越多而高度增大…"></a>input输入，当输入完成按下enter时，将内容添加到下方，下方不断随着输入的内容越多而高度增大…</h5><pre><code>document.querySelector(&quot;.edit-menu .addMember&quot;).addEventListener(&quot;keydown&quot;, function (event){
-    if(event.which === 13) {
-      var itemValue = $(this).val();
-      $(&quot;.names&quot;).append(&quot;&lt;span class=&apos;name&apos;&gt;&quot;+itemValue+&quot;&lt;/span&gt;&quot;);
-      $(&quot;input&quot;).val(&quot;&quot;);
-    }
-  });
-</code></pre><p>监听enter,当输入完按下enter时，增加一个span元素，再将input内的值清空</p>
-<pre><code>.edit-menu .edit-wrapper .names {
-  width: 300px;
-  margin:0 auto;
-  overflow-x:hidden;
-  word-break: keep-all;
-  word-wrap: break-word;
-}
-</code></pre><p>设置宽，并x方向隐藏(不会溢出…)，怎么解决输入的一个名字中间被换行？ <code>word-break: keep-all;word-wrap: break-word;</code></p>
-<p><a href="http://web.jobbole.com/86320/" target="_blank" rel="external">CSS单词换行and断词，你真的完全了解吗</a></p>
-<p>以上解析的很详细啊啊啊</p>
-<p>relative:</p>
-<p><a href="https://segmentfault.com/q/1010000005871624/a-1020000005875898" target="_blank" rel="external">怎样使聊天输入框的高度随着文字的增加而增加高度？</a></p>
-<p>另：神奇的 contenteditable 全局属性 </p>
-<p><code>&lt;element contenteditable=&quot;true&quot;&gt;</code> 可以编辑元素内容</p>
-<p>#####　怎么实现在mongoDB中随机获取一条记录？</p>
-<ol>
-<li>在建表时加上random的字段… 在3.2版本以下</li>
-<li>$sample  <code>collection.aggregate({ $sample: {size:1}}</code></li>
-</ol>
-<p><a href="https://stackoverflow.com/questions/2824157/random-record-from-mongodb" target="_blank" rel="external">Random record from MongoDB</a></p>
-<h3 id="很久以前的回顾…"><a href="#很久以前的回顾…" class="headerlink" title="很久以前的回顾…."></a>很久以前的回顾….</h3><h5 id="需要用div来做表格"><a href="#需要用div来做表格" class="headerlink" title="需要用div来做表格.."></a>需要用div来做表格..</h5><p>虽然后面是用了div套span，再将span display:inline-block 加上百分比来实现</p>
-<p>但是却发现了有一种<code>display:table-cell</code>的方法…</p>
-<p><a href="https://stackoverflow.com/questions/16398823/why-is-a-div-with-display-table-cell-not-affected-by-margin" target="_blank" rel="external">Why is a div with “display: table-cell;” not affected by margin?</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display" target="_blank" rel="external">display:MDN</a></p>
-<h5 id="轮播图实现"><a href="#轮播图实现" class="headerlink" title="轮播图实现"></a>轮播图实现</h5><p><a href="http://www.jb51.net/article/86421.htm" target="_blank" rel="external">全面解析Bootstrap中Carousel轮播的使用方法</a></p>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/18/1117/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
