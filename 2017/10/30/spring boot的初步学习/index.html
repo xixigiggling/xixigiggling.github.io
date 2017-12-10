@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="spring boot," />
 
 
 
@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="初始化创建文件夹  hexo init git clone https://github.com/iissnan/hexo-theme-nextthemes/next（next为主题名字） _config.yml的配置注意里面有很多链接可以参考，具体不表">
-<meta name="keywords" content="Hexo">
+<meta name="description" content="很久没碰过后端，这次的整个项目就像从头开始拾起java和spring,有太多新的名词和新的知识，再加上之前自己的基础根本就不牢固，总之在曲折中成长吧，加油~ jpa中的一些配置由来 为了解决抽象各个Java实体基本的“增删改查”操作，我们通常会以泛型的方式封装一个模板Dao来进行抽象简化，但是这样依然不是很方便，我们需要针对每个实体编写一个继承自泛型模板Dao的接口，再编写该接口的实现。虽然一些基">
+<meta name="keywords" content="spring boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭博客初步">
-<meta property="og:url" content="http://yoursite.com/2017/10/15/hexo初步/index.html">
+<meta property="og:title" content="spring boot的初步学习">
+<meta property="og:url" content="http://yoursite.com/2017/10/30/spring boot的初步学习/index.html">
 <meta property="og:site_name" content="方木的博客">
-<meta property="og:description" content="初始化创建文件夹  hexo init git clone https://github.com/iissnan/hexo-theme-nextthemes/next（next为主题名字） _config.yml的配置注意里面有很多链接可以参考，具体不表">
+<meta property="og:description" content="很久没碰过后端，这次的整个项目就像从头开始拾起java和spring,有太多新的名词和新的知识，再加上之前自己的基础根本就不牢固，总之在曲折中成长吧，加油~ jpa中的一些配置由来 为了解决抽象各个Java实体基本的“增删改查”操作，我们通常会以泛型的方式封装一个模板Dao来进行抽象简化，但是这样依然不是很方便，我们需要针对每个实体编写一个继承自泛型模板Dao的接口，再编写该接口的实现。虽然一些基">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-10T04:47:06.208Z">
+<meta property="og:updated_time" content="2017-12-10T07:16:25.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo搭博客初步">
-<meta name="twitter:description" content="初始化创建文件夹  hexo init git clone https://github.com/iissnan/hexo-theme-nextthemes/next（next为主题名字） _config.yml的配置注意里面有很多链接可以参考，具体不表">
+<meta name="twitter:title" content="spring boot的初步学习">
+<meta name="twitter:description" content="很久没碰过后端，这次的整个项目就像从头开始拾起java和spring,有太多新的名词和新的知识，再加上之前自己的基础根本就不牢固，总之在曲折中成长吧，加油~ jpa中的一些配置由来 为了解决抽象各个Java实体基本的“增删改查”操作，我们通常会以泛型的方式封装一个模板Dao来进行抽象简化，但是这样依然不是很方便，我们需要针对每个实体编写一个继承自泛型模板Dao的接口，再编写该接口的实现。虽然一些基">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/15/hexo初步/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/30/spring boot的初步学习/"/>
 
 
 
 
 
-  <title>Hexo搭博客初步 | 方木的博客</title>
+  <title>spring boot的初步学习 | 方木的博客</title>
   
 
 
@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/hexo初步/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/spring boot的初步学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="方木">
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo搭博客初步</h1>
+          <h1 class="post-title" itemprop="name headline">spring boot的初步学习</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T17:32:28+08:00">
-                2017-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T00:00:00+08:00">
+                2017-10-30
               </time>
             
 
@@ -331,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo建站/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo建站</span>
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
                   </a>
                 </span>
 
@@ -368,30 +368,47 @@
       
 
       
-        <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>创建文件夹 </p>
-<pre><code>hexo init
-git clone https://github.com/iissnan/hexo-theme-nextthemes/next（next为主题名字）
-</code></pre><h2 id="config-yml的配置"><a href="#config-yml的配置" class="headerlink" title="_config.yml的配置"></a>_config.yml的配置</h2><p>注意里面有很多链接可以参考，具体不表</p>
+        <p>很久没碰过后端，这次的整个项目就像从头开始拾起java和spring,有太多新的名词和新的知识，再加上之前自己的基础根本就不牢固，总之在曲折中成长吧，加油~</p>
+<h3 id="jpa中的一些配置"><a href="#jpa中的一些配置" class="headerlink" title="jpa中的一些配置"></a>jpa中的一些配置</h3><h5 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h5><blockquote>
+<p>为了解决抽象各个Java实体基本的“增删改查”操作，我们通常会以泛型的方式封装一个模板Dao来进行抽象简化，但是这样依然不是很方便，我们需要针对每个实体编写一个继承自泛型模板Dao的接口，再编写该接口的实现。虽然一些基础的数据访问已经可以得到很好的复用，但是在代码结构上针对每个实体都会有一堆Dao的接口和实现。</p>
+</blockquote>
 <a id="more"></a>
-<h2 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h2><pre><code>hexo clean
-hexo g
-hexo s
-hexo d
-</code></pre><ul>
-<li>清除public，当 source 文件夹中的部分资源更改过之后，特别是对    文件进行了删除或者路径的改变之后，需要执行这个命令，然后重新    编译。编译，一般部署上去的时候都需要编译一下，编译后，会出现一    个 public 文件夹，将所有的md文件编译成html文件</li>
-<li>开启本地服务，</li>
-<li>部署</li>
-</ul>
-<h2 id="本地浏览博客"><a href="#本地浏览博客" class="headerlink" title="本地浏览博客"></a>本地浏览博客</h2><p>在hexo文件夹目录下：</p>
-<pre><code>hexo g 
-hexo s
-</code></pre><p>localhost：4000即可</p>
-<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>HEXO\source_posts文件下，新建.md文件就可以写文章</p>
-<pre><code>hexo new &quot; 文章标题 &quot; 
-</code></pre><p>会新建好模版md</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>_config.yml进行配置deploy即可</p>
-<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>发布到Github ：<br>    hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://cherryblog.site" target="_blank" rel="external">Cherry’s Blog</a><br><a href="http://www.jianshu.com/p/189fd945f38f" target="_blank" rel="external">搭建个人博客-hexo+github详细完整步骤</a></p>
+<h5 id="在resouce里建立配置文件Application-properties"><a href="#在resouce里建立配置文件Application-properties" class="headerlink" title="在resouce里建立配置文件Application.properties"></a>在resouce里建立配置文件Application.properties</h5><pre><code>spring.jpa.properties.hibernate.hbm2ddl.auto = update
+</code></pre><p>最常用的属性，第一次加载hibernate时根据model类会自动建立起表的结构（前提是先建立好数据库），以后加载hibernate时根据model类自动更新表结构,部署到服务器后，应用第一次运行起来后才会建立表结构，还有create|create-drop|validate</p>
+<h5 id="在实体类-Column的用法"><a href="#在实体类-Column的用法" class="headerlink" title="在实体类@Column的用法"></a>在实体类@Column的用法</h5><pre><code>@Column(nullable=false,unique=true)
+</code></pre><p>unique=true是指这个字段的值在这张表里不能重复，所有记录值都要唯一，就像主键那样</p>
+<p>unique=true是指这个字段的值在这张表里不能重复，所有记录值都要唯一，就像主键那样</p>
+<h5 id="在实体类-Entity里面需要声明构造函数"><a href="#在实体类-Entity里面需要声明构造函数" class="headerlink" title="在实体类@Entity里面需要声明构造函数"></a>在实体类@Entity里面需要声明构造函数</h5><pre><code>public Customer(int cusAge, String cusName, String cusPsw, String cusPhone) {
+    this.cusAge = cusAge;
+    this.cusName = cusName;
+    this.cusPsw = cusPsw;
+    this.cusPhone = cusPhone;
+}
+</code></pre><blockquote>
+<p>The other constructor is the one you’ll use to create instances of Customer to be saved to the database</p>
+</blockquote>
+<h5 id="指定映射的表名"><a href="#指定映射的表名" class="headerlink" title="指定映射的表名"></a>指定映射的表名</h5><pre><code>@Table(name =&quot;customer&quot;)
+</code></pre><h5 id="xxReposity继承jpaReposity与CrudReposity的区别？"><a href="#xxReposity继承jpaReposity与CrudReposity的区别？" class="headerlink" title="xxReposity继承jpaReposity与CrudReposity的区别？"></a>xxReposity继承jpaReposity与CrudReposity的区别？</h5><blockquote>
+<p>JpaRepository extends PagingAndSortingRepository which in turn extends CrudRepository.</p>
+<p>Their main functions are:</p>
+<p>CrudRepository mainly provides CRUD functions.</p>
+<p>PagingAndSortingRepository provide methods to do pagination and sorting records.</p>
+<p>JpaRepository provides some JPA related method such as flushing the persistence context and delete record in a batch.</p>
+<p>Because of the inheritance mentioned above,  JpaRepository will have all the functions of CrudRepository and PagingAndSortingRepository. So if you don’t need the repository to have the functions provided by JpaRepository and PagingAndSortingRepository , use CrudRepository.</p>
+<p>The class CrudRepository is part of the Spring Data Commons project and is the recommended interface to extend </p>
+</blockquote>
+<p><a href="http://blog.didispace.com/springbootdata2/" target="_blank" rel="external">Spring Boot中使用Spring-data-jpa让数据访问更简单、更优雅</a></p>
+<p><a href="https://spring.io/guides/gs/accessing-data-jpa/" target="_blank" rel="external">Accessing Data with JPA</a></p>
+<p><a href="https://docs.spring.io/spring-data/data-jpa/docs/current/api/" target="_blank" rel="external">Spring Docs:jpa</a></p>
+<h3 id="记录一个小问题"><a href="#记录一个小问题" class="headerlink" title="记录一个小问题"></a>记录一个小问题</h3><pre><code>{
+  &quot;timestamp&quot;: 1508640682920,
+  &quot;status&quot;: 500,
+  &quot;error&quot;: &quot;Internal Server Error&quot;,
+  &quot;exception&quot;: &quot;java.lang.IllegalStateException&quot;,
+  &quot;message&quot;: &quot;Optional int parameter &apos;cus_age&apos; is present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.&quot;,
+  &quot;path&quot;: &quot;/save&quot;
+}
+</code></pre><p>在使用postman测REST接口的时候发现弹出这个message，终于发现了为什么要采用long做id(这个是为了更大的位)，Interge做age，因为无法被转化为null</p>
 
       
     </div>
@@ -409,7 +426,7 @@ hexo s
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/spring-boot/" rel="tag"># spring boot</a>
           
         </div>
       
@@ -422,14 +439,18 @@ hexo s
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/29/瞎扯 这种态度是很重要的/" rel="next" title="瞎扯 这种态度是很重要的">
+                <i class="fa fa-chevron-left"></i> 瞎扯 这种态度是很重要的
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/23/瞎扯 献给仍在自学路上挣扎，却又心有所不满的人们/" rel="prev" title="瞎扯 献给仍在自学路上挣扎，却又心有所不满的人们">
-                瞎扯 献给仍在自学路上挣扎，却又心有所不满的人们 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/30/前端学习资源记录/" rel="prev" title="前端学习资源记录">
+                前端学习资源记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -563,7 +584,7 @@ hexo s
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config-yml的配置"><span class="nav-number">2.</span> <span class="nav-text">_config.yml的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令解释"><span class="nav-number">3.</span> <span class="nav-text">命令解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地浏览博客"><span class="nav-number">4.</span> <span class="nav-text">本地浏览博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文章"><span class="nav-number">5.</span> <span class="nav-text">写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">6.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布"><span class="nav-number">7.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jpa中的一些配置"><span class="nav-number">1.</span> <span class="nav-text">jpa中的一些配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#由来"><span class="nav-number">1.0.1.</span> <span class="nav-text">由来</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在resouce里建立配置文件Application-properties"><span class="nav-number">1.0.2.</span> <span class="nav-text">在resouce里建立配置文件Application.properties</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在实体类-Column的用法"><span class="nav-number">1.0.3.</span> <span class="nav-text">在实体类@Column的用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在实体类-Entity里面需要声明构造函数"><span class="nav-number">1.0.4.</span> <span class="nav-text">在实体类@Entity里面需要声明构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指定映射的表名"><span class="nav-number">1.0.5.</span> <span class="nav-text">指定映射的表名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xxReposity继承jpaReposity与CrudReposity的区别？"><span class="nav-number">1.0.6.</span> <span class="nav-text">xxReposity继承jpaReposity与CrudReposity的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#记录一个小问题"><span class="nav-number">2.</span> <span class="nav-text">记录一个小问题</span></a></li></ol></div>
             
 
           </div>
