@@ -1,0 +1,51 @@
+*{
+  padding:0;
+  margin:0;
+}
+html {
+  font-size: 14px;
+}
+html,body{
+  padding:0; 
+  margin:0;
+}
+body {
+  background: #fcfcfc;
+}
+h1 {
+  padding-top: 2.1rem;
+  margin: 0 0 1.68rem 0;
+  line-height: 110%;
+  font-size: 4.2rem;
+}
+h2 {
+  font-size: 3.56rem;
+  line-height: 110%;
+  margin: 1.78rem 0 1.424rem 0;
+}
+h4{
+  margin: 1.14rem 0 .912rem 0;
+  line-height: 110%;
+  font-size: 2.28rem;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    line-height: 1.1;
+}
+p {
+  color: rgba(0,0,0,0.71);
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+ul {
+  /*margin-bottom: 30px;*/
+  padding: 0;
+  list-style: none;
+}
+ul li {
+  margin: 14px 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
