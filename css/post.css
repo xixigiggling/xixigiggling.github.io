@@ -23,7 +23,6 @@
     display: inline-block;
     padding: 3px;
     margin: 0 3px 10px 0;
-    background: #eee;
     font-size: 12px;
   }
   span.tag {
@@ -55,7 +54,6 @@
     /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);*/
     /*background: #fcfcfc;*/
   }
-
   .gotop-wrapper {
     position: fixed;
     bottom: 50px;
@@ -64,18 +62,63 @@
     height: 60px;
     transform: matrix(0, 1, -1, 0, 0, 0);
   }
-  .toc {
-    position: fixed;
-    top: 50px;
-    right: 100px;
-    width: 240px;
-    background: #fff;
-  }
-
   /*
   ** 解决生成的分类名链接a元素，样式被覆盖的问题
   */
   .markdown-body header .tag a {
     text-decoration: none;
     color: #333;
+  }
+
+  /*
+  * 解决toc的问题
+  */
+  /*.markdown-body ul,ol{
+    list-style-type:circle;
+    color: #ff7878;
+  }*/
+  #toc-wrapper ul,
+  #toc-wrapper ol{
+    list-style:none;
+    color: #ff7878;
+  }
+  #toc-wrapper {
+    position: fixed;
+    /*position: absolute;*/
+    top: 90px;
+    right: 8px;
+    width: 260px;
+    background: #fff;
+  }
+  #toc-wrapper ol {
+    padding-left: 1em;
+  }
+  /*#toc-wrapper .active {
+    color: #ff7878
+  }*/
+  #toc-wrapper .toc-child {
+    overflow: hidden;
+    transition: 1s;
+    max-height: 0;
+  }  
+  #toc-wrapper .toc-child.active {
+    max-height: 1000px;
+  }
+  #toc-wrapper .toc-link.active {
+    color: #ff7878
+  }
+  #toc-wrapper .toc-link {
+    font-size: 0;
+    color: #333;
+  }
+  #toc-wrapper span {
+    padding: 0 3px;
+
+  }
+  .menu {
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    width: 240px;
+    background: #fff;
   }
