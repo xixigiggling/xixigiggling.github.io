@@ -188,13 +188,14 @@
 
                 var itemRect = titleList[i].getBoundingClientRect(),
                     nextItemRect = titleList[i + 1].getBoundingClientRect();
-                if (itemRect.top - 15 > 0) {
+                // 原来15 改成50
+                if (itemRect.top - 300 > 0) {
                     if (i === 0) {
                         currTitle = titleList[i];
                         return;
                     }
-                } else if (itemRect.top - 15 < 0) {
-                    if (nextItemRect.top - 15 > 0) {
+                } else if (itemRect.top - 300 < 0) {
+                    if (nextItemRect.top - 300 > 0) {
                         currTitle = titleList[i];
                         return;
                     }

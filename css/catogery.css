@@ -79,3 +79,15 @@
   bottom: 45px;
   left: 60px;
 }
+
+
+@media screen and (max-width: 1053px) { 
+  .goBack,
+  .robot,
+  .border-line {
+    display:none;
+  }
+  .content {
+    width: 80%;
+  }
+}
