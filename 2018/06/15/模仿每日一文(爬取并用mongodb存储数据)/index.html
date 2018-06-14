@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Cache-control" content="public">
+<title>施程的博客</title>
+<link rel="shortcut icon" href="../../../../img/code.ico" type="image/x-icon">
+<title>模仿每日一文(爬取并用mongodb存储数据)</title>
+<link rel="stylesheet" href="/../../../../css/post.css">
+<link rel="stylesheet" href="/../../../../css/github-markdown.css">
+<link rel="stylesheet" href="/../../../../css/github.css">
+<script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div class="wrapper">
+  <div class="back-wrapper" id="js-goBack">
+    <a href="/">
+      <img src="../../../../img/back.svg">
+    </a>
+  </div>
+  <div id="toc-wrapper">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模仿每日一文-爬取并用mongodb存储数据"><span class="toc-number">1.</span> <span class="toc-text">模仿每日一文(爬取并用mongodb存储数据)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫数据的抓取"><span class="toc-number">1.1.</span> <span class="toc-text">爬虫数据的抓取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有了txt文档，转存到mongodb中"><span class="toc-number">1.2.</span> <span class="toc-text">有了txt文档，转存到mongodb中</span></a></li></ol></li></ol>
+  </div>
+  <article class="markdown-body" id="top">
+    <header>
+      <h1>模仿每日一文(爬取并用mongodb存储数据)</h1>
+      
+      
+      
+      
+      <span class="tag">
+        <a href="/categories/nodejs/">
+          nodejs
+        </a>
+      </span>
+      <span class="tag">
+        2018-06-15
+      </span>
+    </header>
+    <h2 id="模仿每日一文-爬取并用mongodb存储数据"><a href="#模仿每日一文-爬取并用mongodb存储数据" class="headerlink" title="模仿每日一文(爬取并用mongodb存储数据)"></a>模仿每日一文(爬取并用mongodb存储数据)</h2><p>缘于，自己使用了很久的一个网站，有app端，<a href="https://www.meiriyiwen.com/" target="_blank" rel="external">每日一文</a></p>
+<p>nodejs可以试一下爬虫，就有了这个demo: <a href="http://47.106.158.44:8080/#/" target="_blank" rel="external">模仿每日一文</a></p>
+<h3 id="爬虫数据的抓取"><a href="#爬虫数据的抓取" class="headerlink" title="爬虫数据的抓取"></a>爬虫数据的抓取</h3><p>分析网页，其中有一个随机文章的入口查看它的连接为<code>https://meiriyiwen.com/random</code>，于是很简单的得到了思路，不断的去发起随机文章的请求，在把文章网页存下来就可以了</p>
+<p>把url存一个数组：</p>
+<pre><code>var url = &quot;https://meiriyiwen.com/random&quot;; 
+var urls = [];
+// 准备抓取7000条数据
+for (var i =0 ; i&lt; 7000; i++) {
+  urls.push(url);
+}
+</code></pre><p>开始，发起请求的库采用<code>request</code>，在参考的文章中，提到要限制并发的数量：</p>
+<blockquote>
+<p>只是有一点做的不好的地方是我们刚刚并没有限制并发的数量，这也是我发现 cnblog 可以改善的一点，不然很容易被单IP的巨量 URL 请求攻击到崩溃。为了做一个好公民，也为了减轻网站的压力（其实为了不被封IP），这4000个URL 我限制了同时并发量最高为5。这里用到了另一个非常强大的库 <code>async</code> ，让我们控制并发量变得十分轻松</p>
+</blockquote>
+<pre><code>// 限制并发数量为5，处理文章页面的函数为downloadTxt
+async.mapLimit(urls, 5 ,function (url, callback) {
+  downloadTxt(url, callback);
+}, function (err,result) {
+  console.error(err);
+});
+</code></pre><p>请求页面的函数：</p>
+<pre><code>function downloadTxt(url,callback){
+  // 随机延迟与并发配合
+  var delay = parseInt((Math.random() * 30000000) % 1000, 10);
+  // 统计一下一共爬了多少条
+  curCount++;
+  console.log(&apos;现在的并发数是&apos;, curCount, &apos;，正在抓取的是&apos;, url, &apos;，耗时&apos; + delay + &apos;毫秒&apos;);  
+  request(url,function (error, response, body) {
+    dealBody(body);
+  });
+  // 参考的参考文章，有点不清楚...
+  setTimeout(function() {
+    curCount--;
+    callback(null,url +&apos;Call back content&apos;);
+  }, delay);
+}
+</code></pre><p>处理页面的函数</p>
+<pre><code>function dealBody(body) {
+  // 得到p元素里面的内容
+  var str = getInnerString(body, &quot;&lt;p&gt;&quot;,&quot;&lt;/p&gt;&quot;);
+  var str_copy = str.map(function(elem){ 
+    // 对p元素里面的内容进行去除换行
+    return deleteEnter(elem);
+  });
+  // 得到标题信息 例如&lt;title&gt;饮茶时光 梁文道 | 每日一文&lt;/title&gt;
+  var titleMes = getInnerString(body, &quot;&lt;title&gt;&quot;,&quot;&lt;/title&gt;&quot;);
+  // 对标题信息中，按空格区分，得到文章名和作者名
+  var title = separateBlank(titleMes[0])[0];
+  var author = separateBlank(titleMes[0])[1];
+  // 给文章和作者在末尾加上换行符，方便txt文档的美观
+  str_copy.unshift(title+&quot;\r\n&quot;,author+&quot;\r\n&quot;);
+  // 对每一行p，都在末尾加上换行符
+  var text = str_copy.reduce(function(accumulator, curValue){
+    return accumulator+=curValue+&quot;\r\n&quot;;
+  });
+  // 按标题加作者名的txt文档，写入本地磁盘
+  fs.writeFile(&quot;dataTest/&quot;+title+&apos;-&apos;+author+&quot;.txt&quot;,text,function(err){
+    if (err) { return console.error(err); }
+  })
+}
+</code></pre><p>调用的工具函数：</p>
+<pre><code>// 去除空格
+function separateBlank (str) {
+  return str.split(&quot; &quot;);
+}
+
+// 根据前缀和后缀来正则，取得中间的内容
+function getInnerString(source, prefix, postfix) {
+  if(prefix!==&quot;&lt;p&gt;&quot;)
+    var regexp = new RegExp(encodeReg(prefix) +&apos;.+&apos;+ encodeReg(postfix), &apos;gi&apos;);
+  else
+    var regexp = new RegExp(encodeReg(prefix) + &apos;(?:(?!&lt;\/p&gt;)[\\s\\S])*&apos; + encodeReg(postfix), &apos;gi&apos;);
+  var matches = String(source).match(regexp);
+  if(matches == null) {
+    let now = new Date();
+    matches=[&apos;this is failed&apos;,now+&apos;&apos;];
+  }
+  var formatedMatches = matches.map(value =&gt; {
+    return value
+     .replace(prefix, &apos;&apos;)
+     .replace(postfix, &apos;&apos;);
+    });
+  return formatedMatches;
+}
+
+//转义影响正则的字符
+function encodeReg(source) {
+ return String(source).replace(/([.*+?^=!:${}()|[\]/\\])/g,&apos;\\$1&apos;);
+}
+
+// 删除空格
+function deleteEnter(str) {
+  // 字符串需要进行深拷贝
+  var newStr = Object.assign({},str);
+  newStr = String(str).replace(/\n/gi,&apos;&apos;);
+  newStr = String(newStr).replace(/\r/gi,&apos;&apos;);
+  return newStr;
+}
+</code></pre><p>结果是：<code>1,897 个文件</code>后就终止了，后再尝试数量也大致如此，大概是只有这么多的随机文章</p>
+<p>总结：</p>
+<p>一开始并不知道有<code>cheeio</code>这个库，还好由于这个页面结构简单，页面的发出请求和得到页面的过程都很常规和简单，主要是参考了参考文章加上了<code>限制并发</code></p>
+<p>最消耗精力的是得到页面后，怎么解析页面变成一个个的txt文档，包括去除空格和换行，转义，大量使用正则等</p>
+<p>另，第一次爬虫有种挺神奇的感觉…(后面再用爬虫就用上了<code>cheerio</code>库方便多了)</p>
+<p>参考：<a href="https://www.cnblogs.com/coco1s/p/4954063.html" target="_blank" rel="external">【nodeJS爬虫】前端爬虫系列 – 小爬「博客园」</a></p>
+<h3 id="有了txt文档，转存到mongodb中"><a href="#有了txt文档，转存到mongodb中" class="headerlink" title="有了txt文档，转存到mongodb中"></a>有了txt文档，转存到mongodb中</h3><p>写一个node脚本：</p>
+<pre><code>// 读取data目录下的所有文件，dealData(data)用于把每一个txt格式化成json数据
+fs.readdir(&apos;data&apos;, function(err, files) {  
+    if (err) {  throw err; }
+    for(var i = 0; i&lt; files.length; i++) {
+      fs.readFile(&quot;data/&quot;+files[i], &apos;utf-8&apos;, function(err, data) {  
+        if (err) {  throw err;  }  
+        dealData(data);
+      });  
+    } 
+}); 
+
+// 把每一个txt格式化成json
+function dealData(data) {
+  var arr = separateEnter(data);
+  removeByValue(arr,&quot;\r&quot;);
+  deleteEnter(arr);
+  removeByValue(arr,&apos;&apos;);
+  var article = {
+    &quot;title&quot;:&quot;&quot;,
+    &quot;author&quot;:&quot;&quot;,
+    &quot;content&quot;: []
+  };
+  article.title = arr[0];
+  article.author = arr[1];
+  article.content = arr.slice(2); 
+  console.log(&quot;arr is : &quot;, arr);
+  console.log(&apos;----------------------------------------&apos;)
+  console.log(&quot;article is : &quot;, article);
+  // 写入数据库
+  writeTodb(article);
+}
+
+// 写入数据库
+function writeTodb(article) {
+  var MongoClient = require(&apos;mongodb&apos;).MongoClient,
+      assert = require(&apos;assert&apos;);
+  // Connection URL
+  var url = &apos;mongodb://localhost:27017/articles&apos;;
+
+  var insertDocuments = function(db,article, callback) {
+    // Get the documents collection
+    var collection = db.collection(&apos;article&apos;);
+    // Insert some documents
+    collection.insert(article, function(err, result) {
+      // 不想每次都用if(err) {...}，可以使用node自带的Assert断言测试
+      assert.equal(err, null);
+      console.log(&quot;Inserted a article into the collection&quot;);
+      callback(result);
+    });
+  }
+
+  // Use connect method to connect to the server
+  MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log(&quot;Connected successfully to server&quot;);
+    insertDocuments(db, article, function() {
+      db.close();
+    });
+  });
+}
+
+// 工具函数
+function removeByValue(arr, val) {
+  for(var i=0; i&lt;arr.length; i++) {
+    if(arr[i] === val || arr[i] === &apos;&apos;) {
+      arr.splice(i, 1);
+    }
+  }
+}
+function deleteEnter(arr) {
+  for(var i=0; i&lt;arr.length; i++) {
+    arr[i] = arr[i].replace(/\r/gi,&apos;&apos;);
+  }
+}
+function separateEnter (str) {
+  return str.split(&quot;\n&quot;);
+}
+</code></pre><p>由txt文档写入mongodb的过程，主要用node的fs模块，加上写入mongodb的标准写法即可</p>
+
+  </article>
+</div>
+
+<script type="text/javascript" src="../../../../js/post.js"></script>
+</body>
+</html>
